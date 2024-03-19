@@ -1,0 +1,2 @@
+Numero: 123 Nombre: i Nombre cientifico: asd Color: csa Altura maxima: 32
+Numero: 23 Nombre: hola Nombre cientifico: nashe Color: lja Altura maxima: 2
