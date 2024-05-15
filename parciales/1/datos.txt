@@ -1,0 +1,40 @@
+1 
+Martillo
+Martillo de carpintero de acero con mango de madera. 
+50
+2
+Destornillador
+Juego de destornilladores de punta plana y de estrella.
+30
+3
+Sierra eléctrica
+Sierra eléctrica para cortes precisos en madera.
+20
+4
+Clavos galvanizados
+Caja de 500 clavos galvanizados de 2 pulgadas.
+100
+5
+Pintura blanca
+Lata de pintura blanca de 1 litro para interiores.
+80
+6
+Llave ajustable
+Llave ajustable de 10 pulgadas para múltiples tamaños de tuercas.
+25
+7
+Taladro inalámbrico
+Taladro inalámbrico con batería recargable de litio.
+15
+8
+Cinta métrica
+Cinta métrica de 5 metros con carcasa resistente.
+40
+9
+Tornillos autorroscantes
+Juego de 100 tornillos autorroscantes de acero inoxidable.
+60
+10
+Linterna LED
+Linterna LED resistente al agua con 3 modos de iluminación.
+35

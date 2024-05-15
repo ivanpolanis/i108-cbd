@@ -1,0 +1,44 @@
+1
+Excursión en Velero
+Paseo en velero por la costa disfrutando del paisaje marino
+16
+2 
+Tour Gastronómico
+Excursión gastronómica probando platos típicos de la región
+22
+3
+Visita a Parques Nacionales
+Excursión de varios días visitando parques nacionales
+8
+3
+Visita a Parques Nacionales
+Excursión de varios días visitando parques nacionales
+16
+4 
+Safari Fotográfico
+Safari fotográfico en la reserva natural
+18
+5
+Excursión de Buceo
+Excursión de buceo en los arrecifes de coral
+12
+6
+Paseo en Kayak
+Paseo en kayak por los ríos locales
+10
+7
+Avistamiento de Ballenas
+Excursión en barco para avistar ballenas en su hábitat natural
+30
+8 
+Tour Histórico
+Recorrido por los lugares históricos de la ciudad
+20
+9 
+Trekking en la Montaña
+Excursión de dos días realizando trekking en la montaña
+15
+10 
+Ruta del Vino
+Excursión de un día visitando bodegas locales
+25
