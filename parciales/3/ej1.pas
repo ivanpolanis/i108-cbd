@@ -1,105 +1,113 @@
-program ej1;
-const
-	N = 50;
-	valoralto = 9999;
-type
-	producto = record
-		codigo: integer;
-		nombre: string;
-		descripcion: string;
-		stock: integer;
-	end;
 
-	detalle = record
-		codigo: integer;
-		vendido: integer;
-	end;
+Program ej1;
 
-	t_detalle = file of detalle;
-	t_producto = file of producto;
+Const 
+  N = 50;
+  valoralto = 9999;
 
-	a_fdetalle = array[N] of t_detalle;
-	a_detalle = array[N] of detalle;
+Type 
+  producto = Record
+    codigo: integer;
+    nombre: string;
+    descripcion: string;
+    stock: integer;
+  End;
 
-procedure leer(var detalle: t_detalle; var det: detalle);
-begin
-	if (not eof(detalle)) then
-		read(detalle,det)
-	else
-		det.codigo := valoralto;
-end;
+  detalle = Record
+    codigo: integer;
+    vendido: integer;
+  End;
 
-procedure minimo(var detalles: a_fdetalle; var minimos: a_detalle; var min: detalle);
-var
-	pos_min: integer;
-begin
-	min := minimos[1];
-	pos_min := 1;
+  t_detalle = file Of detalle;
+  t_producto = file Of producto;
 
-	for i:=2 to N do
-		begin
-			if (minimos[i].codigo < min.codigo) then
-				begin
-					min := minimos[i];
-					pos_min:= i;
-				end;
-		end;
+  a_fdetalle = array[1..N] Of t_detalle;
+  a_detalle = array[1..N] Of detalle;
 
-	Leer(detalles[pos_min],minimos[pos_min])
-end;
+Procedure leer(Var detalle: t_detalle; Var det: detalle);
+Begin
+  If (Not eof(detalle)) Then
+    read(detalle,det)
+  Else
+    det.codigo := valoralto;
+End;
 
-procedure actualizar(var master: t_producto; var detalles: a_fdetalle);
-var
-	minimos: a_detalle;
-	min: detalle;
-	prod: producto;
-begin
-	reset(master);
+Procedure minimo(Var detalles: a_fdetalle; Var minimos: a_detalle; Var min: detalle);
 
-	for i:=1 to N do
-		begin
-			reset(detalles[i]);
-			read(detalles[i], minimos[i]);
-		end;
+Var 
+  pos_min,i: integer;
+Begin
+  min := minimos[1];
+  pos_min := 1;
+
+  For i:=2 To N Do
+    Begin
+      If (minimos[i].codigo < min.codigo) Then
+        Begin
+          min := minimos[i];
+          pos_min := i;
+        End;
+    End;
+
+  Leer(detalles[pos_min],minimos[pos_min])
+End;
+
+Procedure actualizar(Var master: t_producto; Var detalles: a_fdetalle);
+
+Var 
+  minimos: a_detalle;
+  min: detalle;
+  prod: producto;
+	i:integer;
+Begin
+  reset(master);
+
+  For i:=1 To N Do
+    Begin
+      reset(detalles[i]);
+      read(detalles[i], minimos[i]);
+    End;
 
   read(master,prod);
-	minimo(detalles,minimos,min);
-	while (min.codigo <> valoralto) do
-	begin
+  minimo(detalles,minimos,min);
+  While (min.codigo <> valoralto) Do
+    Begin
 
-		while(min.codigo <> prod.codigo) do
-		begin
-			read(master,prod);
-		end;
+      While (min.codigo <> prod.codigo) Do
+        Begin
+          read(master,prod);
+        End;
 
-		while (min.codigo <> valoralto) and (min.codigo = prod.codigo) do
-			begin
-				prod.stock := prod.stock - min.vendido;
-				minimo(detalles,minimos,min);
-			end;
+      While (min.codigo <> valoralto) And (min.codigo = prod.codigo) Do
+        Begin
+          prod.stock := prod.stock - min.vendido;
+          minimo(detalles,minimos,min);
+        End;
 
-		seek(master,filepos(master)-1),
-		write(master,prod);
-	end;
+      seek(master,filepos(master)-1);
+      write(master,prod);
+    End;
 
-	close(master);
-	for i:=1 to N do
-		begin
-			close(detalles[i]);
-		end;
-end;
+  close(master);
+  For i:=1 To N Do
+    Begin
+      close(detalles[i]);
+    End;
+End;
 
-var
-	master: t_producto;
-	detalles: a_fdetalle;
-begin
-	assign(master,'data.bin');
-	for i:=1 to N do
-	begin
-		writeln('Ingrese el nombre del archivo: ');
-		readln(nombre);
-		assign(detalles[i],nombre);
-	end;
+Var 
+  master: t_producto;
+  detalles: a_fdetalle;
+	i: integer;
+	nombre: string;
+Begin
+  assign(master,'data.bin');
+  For i:=1 To N Do
+    Begin
+      writeln('Ingrese el nombre del archivo: ');
+      readln(nombre);
+      assign(detalles[i],nombre);
+    End;
 
-	actualizar(master, detalles);
-end.
+  actualizar(master, detalles);
+End.
