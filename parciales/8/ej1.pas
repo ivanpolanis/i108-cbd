@@ -1,11 +1,11 @@
 
 Program ej1;
 
-Const 
+Const
   valoralto = 9999;
   N = 20;
 
-Type 
+Type
   detalle = Record
     anio: integer;
     mes: integer;
@@ -54,7 +54,7 @@ End;
 
 Procedure minimo(Var archivos: a_f_detalle; Var minimos: a_detalle; Var min: detalle);
 
-Var 
+Var
   i, pos_min: integer;
 Begin
   min := minimos[1];
@@ -76,7 +76,7 @@ End;
 
 Procedure crear(Var maestro: f_informe; Var detalles: a_f_detalle);
 
-Var 
+Var
   minimos : a_detalle;
   min: detalle;
   inf: informe;
@@ -103,11 +103,11 @@ Begin
       While (min.anio = inf.anio) Do
         Begin
           inf.mes := min.mes;
+          inf.monto := 0;
+          inf.cant := 0;
           While (min.anio = inf.anio) And (min.mes = inf.mes) Do
             Begin
               inf.dia := min.dia;
-              inf.monto := 0;
-              inf.cant := 0;
 
               While (min.anio = inf.anio) And (min.mes = inf.mes) And (min.dia = inf.dia) Do
                 Begin
@@ -139,12 +139,13 @@ Begin
                           registro.max := ventas;
                           registro.nombre_modelo_max := registro.nombre_modelo;
                         End;
+
+                      inf.cant := inf.cant + ventas;
                     End;
                   writeln(arch_reg, registro.nombre_marca, ':');
                   writeln(arch_reg,'Modelo más vendido: ', registro.nombre_modelo_max, ', unidades: ', registro.max);
                   writeln(arch_reg,'Modelo menos vendido: ', registro.nombre_modelo_min, ', unidades: ', registro.min);
 
-                  inf.cant := inf.cant + ventas;
                 End;
 
 
@@ -160,7 +161,7 @@ Begin
   close(arch_reg);
 End;
 
-Var 
+Var
   master: f_informe;
   detalles: a_f_detalle;
   filename: string;
